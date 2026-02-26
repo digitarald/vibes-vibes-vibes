@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Orchestration — Control Board</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="scanlines"></div>
+
+  <header class="header">
+    <div class="header-left">
+      <div class="header-logo">&#9670;</div>
+      <h1>AGENT ORCHESTRATION</h1>
+      <span class="header-badge" id="header-badge">LIVE</span>
+    </div>
+    <div class="header-right">
+      <span class="header-progress" id="overall-progress">0 / 8 COMPLETE</span>
+      <span class="header-clock" id="mission-clock">T+ 00:00</span>
+      <button class="reset-btn" id="reset-btn">&#8635; RESET</button>
+    </div>
+  </header>
+
+  <main class="board" id="board">
+    <svg class="dependency-lines" id="dependency-svg"></svg>
+
+    <div class="column" data-status="queued">
+      <div class="column-header">
+        <span class="column-dot queued"></span>
+        <span class="column-title">QUEUED</span>
+        <span class="column-count" id="count-queued">0</span>
+      </div>
+      <div class="column-body" id="col-queued"></div>
+    </div>
+
+    <div class="column" data-status="running">
+      <div class="column-header">
+        <span class="column-dot running"></span>
+        <span class="column-title">RUNNING</span>
+        <span class="column-count" id="count-running">0</span>
+      </div>
+      <div class="column-body" id="col-running"></div>
+    </div>
+
+    <div class="column" data-status="needs-input">
+      <div class="column-header">
+        <span class="column-dot needs-input"></span>
+        <span class="column-title">NEEDS INPUT</span>
+        <span class="column-count" id="count-needs-input">0</span>
+      </div>
+      <div class="column-body" id="col-needs-input"></div>
+    </div>
+
+    <div class="column" data-status="completed">
+      <div class="column-header">
+        <span class="column-dot completed"></span>
+        <span class="column-title">COMPLETED</span>
+        <span class="column-count" id="count-completed">0</span>
+      </div>
+      <div class="column-body" id="col-completed"></div>
+    </div>
+  </main>
+
+  <!-- Detail Modal -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <h2 id="modal-title"></h2>
+        <button class="modal-close" id="modal-close">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
